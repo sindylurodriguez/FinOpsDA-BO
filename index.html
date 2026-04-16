@@ -3,242 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bold Automations | Tooldeck</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Bold | Panel de Automatizaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* =========================================
-           PALETA DE COLORES CORPORATIVA "BOLD"
-           ========================================= */
+        /* DEFINICIÓN DE COLORES OSCUROS (Basados en Bold) */
         :root {
-            --bold-blue-dark: #0F172A; /* Azul corporativo oscuro de fondo */
-            --bold-blue-accent: #2563EB; /* Azul vivo para botones */
-            --bold-blue-hover: #1D4ED8;
-            --bold-red: #DC2626; /* Rojo para estados "Offline" o Alertas */
-            --bold-green: #10B981; /* Verde esmeralda para estados "Online" */
-            --bg-color: #F8FAFC; /* Fondo muy claro, gris-azulado */
-            --card-bg: #FFFFFF;
-            --text-main: #1E293B;
-            --text-muted: #64748B;
+            --bg-dark: #0a0f1e;        /* Fondo ultra oscuro */
+            --bg-card: #161e2d;        /* Color de las filas de la lista */
+            --bold-red: #ff3b30;       /* Rojo vibrante para acentos */
+            --bold-blue: #2563eb;      /* Azul corporativo */
+            --text-main: #f8fafc;      /* Texto casi blanco */
+            --text-dim: #94a3b8;       /* Texto gris para descripciones */
+            --border: #1e293b;         /* Color de las líneas divisorias */
         }
 
-        /* CONFIGURACIÓN GENERAL */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* ENCABEZADO TIPO DASHBOARD */
+        /* CABECERA */
         header {
-            background-color: var(--bold-blue-dark);
-            color: white;
-            padding: 40px 20px;
+            width: 100%;
+            padding: 60px 0 40px 0;
             text-align: center;
-            border-bottom: 4px solid var(--bold-red); /* Un toque de rojo Bold abajo */
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, #0f172a 0%, var(--bg-dark) 100%);
         }
 
-        /* Si tienes el logo de BOLD, quita el comentario de la siguiente línea en HTML */
-        header img {
-            max-width: 150px;
-            margin-bottom: 15px;
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: -1px;
+            font-weight: 700;
         }
 
-        h1 { 
-            margin: 0; 
-            font-size: 2.5rem; 
-            font-weight: 800;
-            letter-spacing: -0.5px;
+        h1 span {
+            color: var(--bold-red); /* El toque rojo de Bold */
         }
-        
-        p.subtitle { 
-            color: #CBD5E1; 
-            font-size: 1.1rem; 
+
+        .subtitle {
+            color: var(--text-dim);
             margin-top: 10px;
+            font-size: 1rem;
         }
 
+        /* CONTENEDOR DE LA LISTA */
         .container {
-            max-width: 1100px;
-            margin: 40px auto;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 30px;
             padding: 0 20px;
         }
 
-        /* REJILLA DE TARJETAS (GRID) */
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+        .tool-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        /* DISEÑO DE CADA TARJETA */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid #E2E8F0;
-            transition: all 0.2s ease-in-out;
+        /* FILA DE LA LISTA */
+        .tool-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        .tool-item:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .tool-info {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: var(--bold-blue-accent);
-        }
-
-        /* ICONO DE LA TARJETA (Opcional, en vez de Emojis) */
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .card h2 {
-            margin: 0 0 10px 0;
+        .tool-name {
+            font-size: 1.1rem;
+            font-weight: 600;
             color: var(--text-main);
-            font-size: 1.4rem;
-            font-weight: 600;
         }
 
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
-        }
-
-        /* ESTADOS (Online / Mantenimiento) */
-        .status-container {
-            margin-bottom: 15px;
-        }
-
-        .status {
-            font-size: 0.75rem;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .status.online {
-            background-color: #ECFDF5;
-            color: var(--bold-green);
-        }
-
-        .status.offline {
-            background-color: #FEF2F2;
-            color: var(--bold-red);
-        }
-
-        .status.dev {
-            background-color: #F1F5F9;
-            color: var(--text-muted);
-        }
-
-        /* BOTÓN CORPORATIVO */
-        .btn {
-            display: block;
-            text-align: center;
-            background: var(--bold-blue-accent);
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.2s;
-        }
-
-        .btn:hover {
-            background: var(--bold-blue-hover);
-        }
-
-        /* Botón desactivado para herramientas futuras */
-        .btn.disabled {
-            background: #E2E8F0;
-            color: #94A3B8;
-            cursor: not-allowed;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 80px;
-            padding-bottom: 40px;
-            color: var(--text-muted);
+        .tool-desc {
             font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 4px;
         }
 
+        /* LINK / ACCESO */
+        .tool-link {
+            color: var(--bold-blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border: 1px solid var(--bold-blue);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .tool-link:hover {
+            background-color: var(--bold-blue);
+            color: white;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            margin-top: 100px;
+            padding-bottom: 40px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* ESTADO ONLINE SUTIL */
+        .dot {
+            height: 8px;
+            width: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Panel de Operaciones</h1>
-        <p class="subtitle">Herramientas internas y bots de automatización financiera</p>
+        <h1>Bold <span>Automations</span></h1>
+        <p class="subtitle">Directorio central de herramientas operativas</p>
     </header>
 
     <div class="container">
-        <section class="tool-grid">
-            
-            <div class="card">
-                <div>
-                    <div class="status-container"><span class="status online">● En Línea</span></div>
-                    <div class="card-icon">🤖</div>
-                    <h2>Valenbot</h2>
-                    <p>Conciliación automática de recaudos PSE. Valida ciclos, cuadra valores y genera archivos CSV.</p>
+        <div class="tool-list">
+
+            <div class="tool-item">
+                <div class="tool-info">
+                    <span class="tool-name"><span class="dot"></span> Valenbot</span>
+                    <span class="tool-desc">Conciliación automática de recaudos PSE.</span>
                 </div>
-                <a href="valenbot.html" class="btn">Abrir Herramienta ↗</a>
+                <a href="valenbot.html" class="tool-link">Acceder →</a>
             </div>
 
-            <div class="card">
-                <div>
-                    <div class="status-container"><span class="status online">● En Línea</span></div>
-                    <div class="card-icon">⚙️</div>
-                    <h2>Simonbot</h2>
-                    <p>Provisión automática de costos y gastos contables. Sincroniza con Maestro CECO y notifica a Slack.</p>
+            <div class="tool-item">
+                <div class="tool-info">
+                    <span class="tool-name"><span class="dot"></span> Simonbot</span>
+                    <span class="tool-desc">Provisión de costos y gastos contables.</span>
                 </div>
-                <a href="simonbot.html" class="btn">Abrir Herramienta ↗</a>
+                <a href="simonbot.html" class="tool-link">Acceder →</a>
             </div>
 
-            <div class="card">
-                <div>
-                    <div class="status-container"><span class="status online">● En Línea</span></div>
-                    <div class="card-icon">💵</div>
-                    <h2>Isabot</h2>
-                    <p>Registro de expectativas de monetización USD/COP. Notifica montos y tasas antes de conciliación.</p>
+            <div class="tool-item">
+                <div class="tool-info">
+                    <span class="tool-name"><span class="dot"></span> Isabot</span>
+                    <span class="tool-desc">Expectativas de monetización USD/COP.</span>
                 </div>
-                <a href="https://tupaginaexterna.com" class="btn">Abrir Sistema Externo ↗</a>
+                <a href="https://tu-link-externo.com" class="tool-link">Acceder →</a>
             </div>
 
-            <div class="card" style="border-left: 4px solid var(--bold-red);">
-                <div>
-                    <div class="status-container"><span class="status offline">■ Mantenimiento</span></div>
-                    <div class="card-icon">🛠️</div>
-                    <h2>Reporteador FRA</h2>
-                    <p>Sistema en actualización de base de datos. Estará disponible en 2 horas.</p>
+            <div class="tool-item">
+                <div class="tool-info">
+                    <span class="tool-name"><span class="dot"></span> Sindybot</span>
+                    <span class="tool-desc">Cálculo de provisión de fraude mensual y reportes en Drive.</span>
                 </div>
-                <a href="#" class="btn disabled">Temporalmente Inactivo</a>
+                <a href="sindybot.html" class="tool-link">Acceder →</a>
             </div>
 
-            <div class="card" style="background-color: #F8FAFC; border-style: dashed;">
-                <div>
-                    <div class="status-container"><span class="status dev">▶ En Desarrollo</span></div>
-                    <div class="card-icon">⚡</div>
-                    <h2>Próxima Herramienta</h2>
-                    <p>Estamos trabajando en nuevas automatizaciones para el flujo de tesorería.</p>
-                </div>
-            </div>
-
-        </section>
-
-        <footer>
-            &copy; 2024 Equipo de Operaciones Bold | Generado internamente
-        </footer>
+        </div>
     </div>
+
+    <footer>
+        &copy; 2024 Bold Operations Team | Confidential & Internal
+    </footer>
 
 </body>
 </html>
