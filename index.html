@@ -1,19 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Panel de Automatizaciones</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooldeck de Automatizaciones - Equipo</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-        .card { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
-        h1 { color: #24292e; }
+        /* CONFIGURACIÓN GENERAL */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 { color: #2c3e50; font-size: 2.5rem; }
+        p.subtitle { color: #7f8c8d; font-size: 1.1rem; }
+
+        /* REJILLA DE TARJETAS (GRID) */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* DISEÑO DE CADA TARJETA */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-top: 6px solid #2ecc71; /* Color verde de estado "Online" */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            background: #e8faf0;
+            color: #2ecc71;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #5d6d7e;
+            line-height: 1.5;
+        }
+
+        /* BOTÓN */
+        .btn {
+            display: block;
+            text-align: center;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <h1>🚀 Automatizaciones del Equipo</h1>
-    <div class="card">
-        <h3>Automatización 1</h3>
-        <p>Descripción breve de lo que hace.</p>
-        <a href="enlace_a_tu_script.py">Descargar/Ver Script</a>
-    </div>
+
+<div class="container">
+    <header>
+        <h1>🚀 Panel de Automatizaciones</h1>
+        <p class="subtitle">Centro de herramientas para escalar nuestra operación operativa.</p>
+    </header>
+
+    <section class="tool-grid">
+        
+        <div class="card">
+            <div>
+                <span class="status">Online</span>
+                <h2>🤖 Valenbot</h2>
+                <p>Conciliación automática de recaudos PSE. Valida ciclos, cuadra valores y genera archivos CSV.</p>
+            </div>
+            <a href="valenbot.html" class="btn">Abrir Herramienta ↗</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="status">Online</span>
+                <h2>🚀 Simonbot</h2>
+                <p>Provisión automática de costos y gastos contables. Sincroniza con Maestro CECO y notifica a Slack.</p>
+            </div>
+            <a href="simonbot.html" class="btn">Abrir Herramienta ↗</a>
+        </div>
+
+        <div class="card">
+            <div>
+                <span class="status">Online</span>
+                <h2>💰 Isabot</h2>
+                <p>Registro de expectativas de monetización USD/COP. Notifica montos y tasas antes de conciliación.</p>
+            </div>
+            <a href="https://tupaginaexterna.com" class="btn">Abrir Isabot ↗</a>
+        </div>
+
+        <div class="card" style="border-top-color: #bdc3c7; opacity: 0.7;">
+            <div>
+                <span class="status" style="background:#f2f4f4; color:#95a5a6;">En desarrollo</span>
+                <h2>⚡ Próxima Herramienta</h2>
+                <p>Estamos trabajando en nuevas automatizaciones para el equipo.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        &copy; 2024 Equipo de Automatización | Generado con GitHub Pages
+    </footer>
+</div>
+
 </body>
 </html>
