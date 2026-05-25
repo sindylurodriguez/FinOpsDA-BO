@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinOps Desk | Bold</title>
+    <title>FinOpsDA-BO | Bold</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables de color de Bold */
         :root {
             --azul-bold: #121E6C;
             --coral-vibrante: #EE424E;
@@ -17,11 +16,7 @@
             --borde: #E0E0E0;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -45,27 +40,11 @@
             z-index: 10;
         }
 
-        .logo {
-            height: 35px;
-            width: auto;
-            margin-right: 20px;
-            object-fit: contain;
-        }
-
-        .titulo-principal {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            border-left: 2px solid rgba(255,255,255,0.3);
-            padding-left: 20px;
-        }
+        .logo { height: 35px; width: auto; margin-right: 20px; object-fit: contain; }
+        .titulo-principal { font-size: 1.5rem; font-weight: 700; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 20px; }
 
         /* CONTENEDOR PRINCIPAL */
-        .contenedor-dashboard {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
+        .contenedor-dashboard { display: flex; flex: 1; overflow: hidden; }
 
         /* MENÚ LATERAL */
         .menu-lateral {
@@ -78,68 +57,37 @@
             overflow-y: auto;
         }
 
-        .lista-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-        }
-
+        .lista-menu { list-style: none; display: flex; flex-direction: column; }
         .lista-menu li a {
-            display: block;
-            padding: 16px 30px;
-            color: var(--azul-bold);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-left: 4px solid transparent;
-            transition: all 0.2s ease-in-out;
-            cursor: pointer; /* Hace que el cursor sea una manito */
+            display: block; padding: 16px 30px; color: var(--azul-bold);
+            text-decoration: none; font-size: 0.95rem; font-weight: 600;
+            border-left: 4px solid transparent; transition: all 0.2s; cursor: pointer;
         }
-
         .lista-menu li a:hover {
-            background-color: var(--gris-claro);
-            color: var(--coral-vibrante);
-            border-left-color: var(--coral-vibrante);
+            background-color: var(--gris-claro); color: var(--coral-vibrante); border-left-color: var(--coral-vibrante);
         }
 
         /* ÁREA DE CONTENIDO DERECHA */
-        .area-contenido {
-            flex: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Tarjeta de bienvenida */
+        .area-contenido { flex: 1; padding: 30px; display: flex; flex-direction: column; }
         .tarjeta-contenido {
-            background-color: var(--blanco);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            height: 100%;
+            background-color: var(--blanco); border-radius: 12px; padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); height: 100%;
         }
+        .tarjeta-contenido h2 { font-size: 1.8rem; color: var(--azul-bold); margin-bottom: 15px; }
+        .tarjeta-contenido p { color: var(--gris-texto); line-height: 1.6; }
 
-        .tarjeta-contenido h2 {
-            font-size: 1.8rem;
-            color: var(--azul-bold);
-            margin-bottom: 15px;
-        }
+        /* VISTAS */
+        .vista { display: none; /* Oculta todas las vistas por defecto */ }
+        .vista-activa { display: block; }
+        .vista-iframe { width: 100%; height: 100%; border: none; border-radius: 12px; }
 
-        .tarjeta-contenido p {
-            color: var(--gris-texto);
-            line-height: 1.6;
+        /* DISEÑO ESPECIAL PARA EL DATO NTR */
+        .caja-indicador {
+            background-color: var(--gris-claro); border-left: 5px solid var(--coral-vibrante);
+            padding: 30px; border-radius: 8px; margin-top: 20px; display: inline-block;
         }
-
-        /* Ventana Iframe para cargar otras páginas (oculta al inicio) */
-        .visor-iframe {
-            display: none; /* Se oculta hasta que damos clic a un enlace */
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 12px;
-            background-color: var(--blanco);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
+        .valor-ntr { font-size: 4rem; font-weight: 800; color: var(--azul-bold); }
+        .estado-carga { color: var(--coral-vibrante); font-style: italic; }
 
     </style>
 </head>
@@ -151,46 +99,80 @@
     </header>
 
     <div class="contenedor-dashboard">
-        
         <aside class="menu-lateral">
             <ul class="lista-menu">
-                <li><a onclick="mostrarPagina('https://aldemarjerez-crypto.github.io/Finops-Tooldeck/index.html')">Automatizaciones</a></li>
-                
-                <li><a onclick="mostrarPagina('')">NTR</a></li>
-                <li><a onclick="mostrarPagina('')">ARPAC</a></li>
-                <li><a onclick="mostrarPagina('')">CPC</a></li>
-                <li><a onclick="mostrarPagina('')">Modelo liquidación de ingresos</a></li>
+                <li><a onclick="cambiarVista('automatizaciones')">Automatizaciones</a></li>
+                <li><a onclick="cambiarVista('ntr')">NTR</a></li>
+                <li><a onclick="cambiarVista('mantenimiento')">ARPAC</a></li>
+                <li><a onclick="cambiarVista('mantenimiento')">CPC</a></li>
+                <li><a onclick="cambiarVista('mantenimiento')">Modelo liquidación de ingresos</a></li>
             </ul>
         </aside>
 
         <main class="area-contenido">
-            <div id="bienvenida" class="tarjeta-contenido">
+            <div id="vista-bienvenida" class="tarjeta-contenido vista vista-activa">
                 <h2>Bienvenida al Panel</h2>
-                <p>Selecciona una opción del menú lateral izquierdo. En este espacio se visualizará la información y las herramientas correspondientes a cada módulo.</p>
+                <p>Selecciona una opción del menú lateral izquierdo.</p>
             </div>
 
-            <iframe id="visor" class="visor-iframe" src=""></iframe>
-        </main>
+            <iframe id="vista-automatizaciones" class="vista vista-iframe" src="https://aldemarjerez-crypto.github.io/Finops-Tooldeck/index.html"></iframe>
 
+            <div id="vista-ntr" class="tarjeta-contenido vista">
+                <h2>Indicador NTR (Net Take Rate)</h2>
+                <p>Este dato se calcula mensualmente y se extrae automáticamente en tiempo real desde la nube.</p>
+                
+                <div class="caja-indicador">
+                    <p>Resultado del mes actual:</p>
+                    <div id="valor-ntr-pantalla" class="valor-ntr estado-carga">Cargando datos...</div>
+                </div>
+            </div>
+
+            <div id="vista-mantenimiento" class="tarjeta-contenido vista">
+                <h2>Módulo en construcción</h2>
+                <p>Aún no hay una página configurada para esta opción.</p>
+            </div>
+        </main>
     </div>
 
-    <script>
-        function mostrarPagina(url) {
-            // Si no hay un link todavía (en NTR, ARPAC, etc.), no hace nada
-            if(url === '') {
-                alert('Aún no hay una página configurada para esta opción.');
-                return;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpvG5So-iq2cEGKq10Z-vJaKEiwi4ApwY",
+            authDomain: "ntr-backend.firebaseapp.com",
+            projectId: "ntr-backend",
+            storageBucket: "ntr-backend.firebasestorage.app",
+            messagingSenderId: "888116841336",
+            appId: "1:888116841336:web:712d1e2d4dcee2213e568d",
+            measurementId: "G-K3H9917H5W"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.cambiarVista = async function(nombreVista) {
+            document.querySelectorAll('.vista').forEach(el => el.classList.remove('vista-activa'));
+            document.getElementById('vista-' + nombreVista).classList.add('vista-activa');
+
+            if (nombreVista === 'ntr') {
+                try {
+                    const referenciaDocumento = doc(db, "indicadores", "ntr_mensual");
+                    const resultado = await getDoc(referenciaDocumento);
+
+                    if (resultado.exists()) {
+                        let numeroNTR = resultado.data().resultado_actual;
+                        document.getElementById('valor-ntr-pantalla').innerText = numeroNTR + " %";
+                        document.getElementById('valor-ntr-pantalla').classList.remove('estado-carga');
+                    } else {
+                        document.getElementById('valor-ntr-pantalla').innerText = "Sin datos";
+                    }
+                } catch (error) {
+                    console.error("Error al conectar con Firebase:", error);
+                    document.getElementById('valor-ntr-pantalla').innerText = "Error de red";
+                }
             }
-
-            // Ocultar el mensaje de bienvenida
-            document.getElementById('bienvenida').style.display = 'none';
-            
-            // Mostrar la ventana del Iframe y cargar el enlace
-            let iframe = document.getElementById('visor');
-            iframe.style.display = 'block';
-            iframe.src = url;
-        }
+        };
     </script>
-
 </body>
 </html>
