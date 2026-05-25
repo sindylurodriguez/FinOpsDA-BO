@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinOpsDA-BO | Bold</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Variables de color según el Brandbook de Bold */
+        /* Variables de color de Bold */
         :root {
             --azul-bold: #121E6C;
             --coral-vibrante: #EE424E;
             --blanco: #FFFFFF;
+            --gris-claro: #F1F2F6;
+            --gris-texto: #4A4A4A;
+            --borde: #E0E0E0;
         }
 
-        /* Configuración básica de la página */
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -22,91 +25,148 @@
         }
 
         body {
-            background-color: var(--azul-bold); /* Fondo Azul Bold asegurado */
-            color: var(--blanco);
             font-family: 'Montserrat', sans-serif;
+            background-color: var(--gris-claro);
+            color: var(--azul-bold);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            overflow: hidden; /* Evita scroll general, lo controlaremos por zonas */
         }
 
-        /* Encabezado: Controla la posición y tamaño del logo */
-        .encabezado {
-            width: 100%;
-            padding: 25px 40px;
+        /* =========================================
+           BARRA SUPERIOR (HEADER)
+           ========================================= */
+        .barra-superior {
+            background-color: var(--azul-bold);
+            color: var(--blanco);
+            height: 70px;
             display: flex;
-            justify-content: flex-end; /* Mueve el logo a la derecha */
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 10;
         }
 
         .logo {
-            height: 45px; /* Hace que el logo sea pequeño */
+            height: 35px; /* Controla el tamaño del logo */
             width: auto;
-            border-radius: 8px; /* Le da un toque suave si la imagen es cuadrada */
+            margin-right: 20px;
+            object-fit: contain;
         }
 
-        /* Contenedor del título y menú */
-        .contenido {
-            text-align: center;
-            margin-top: 20px;
-            width: 90%;
-            max-width: 650px;
+        .titulo-principal {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-left: 2px solid rgba(255,255,255,0.3);
+            padding-left: 20px;
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
+        /* =========================================
+           CONTENEDOR DEL DASHBOARD (MENÚ + CONTENIDO)
+           ========================================= */
+        .contenedor-dashboard {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
         }
 
-        /* Diseño de los enlaces como botones modernos */
-        .menu {
-            list-style: none; /* Quita los puntos de la lista */
+        /* =========================================
+           MENÚ LATERAL (SIDEBAR)
+           ========================================= */
+        .menu-lateral {
+            width: 260px;
+            background-color: var(--blanco);
+            border-right: 1px solid var(--borde);
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Espacio entre botones */
+            padding-top: 20px;
+            overflow-y: auto;
         }
 
-        .menu li a {
+        .lista-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lista-menu li a {
             display: block;
-            background-color: rgba(255, 255, 255, 0.1); /* Botón azul claro/transparente */
-            color: var(--blanco);
+            padding: 16px 30px;
+            color: var(--azul-bold);
             text-decoration: none;
-            padding: 18px 20px;
-            border-radius: 12px; /* Bordes redondeados modernos */
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease; /* Animación suave */
+            border-left: 4px solid transparent;
+            transition: all 0.2s ease-in-out;
         }
 
-        /* Efecto al pasar el mouse por encima del botón */
-        .menu li a:hover {
-            background-color: var(--coral-vibrante); /* Cambia al rojo/coral de Bold */
-            border-color: var(--coral-vibrante);
-            transform: translateY(-3px); /* Efecto de que el botón se levanta */
-            box-shadow: 0 10px 20px rgba(238, 66, 78, 0.4); /* Sombra elegante */
+        /* Efecto al pasar el mouse por el menú */
+        .lista-menu li a:hover {
+            background-color: var(--gris-claro);
+            color: var(--coral-vibrante);
+            border-left-color: var(--coral-vibrante);
         }
+
+        /* =========================================
+           ÁREA DE CONTENIDO DERECHA
+           ========================================= */
+        .area-contenido {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto; /* Permite scroll solo en esta área si hay mucha info */
+        }
+
+        /* Tarjeta blanca donde irá la información */
+        .tarjeta-contenido {
+            background-color: var(--blanco);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            min-height: 400px;
+        }
+
+        .tarjeta-contenido h2 {
+            font-size: 1.8rem;
+            color: var(--azul-bold);
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-contenido p {
+            color: var(--gris-texto);
+            line-height: 1.6;
+        }
+
     </style>
 </head>
 <body>
 
-    <header class="encabezado">
-        <img src="beld.png" alt="Logo Bold" class="logo"> 
+    <header class="barra-superior">
+        <img src="beld.png" alt="Logo Bold" class="logo">
+        <h1 class="titulo-principal">FinOpsDA-BO</h1>
     </header>
 
-    <main class="contenido">
-        <h1>FinOpsDA-BO</h1>
+    <div class="contenedor-dashboard">
         
-        <ul class="menu">
-            <li><a href="#automatizaciones">Automatizaciones</a></li>
-            <li><a href="#ntr">NTR</a></li>
-            <li><a href="#arpac">ARPAC</a></li>
-            <li><a href="#cpc">CPC</a></li>
-            <li><a href="#modelo-liquidacion">Modelo liquidación de ingresos</a></li>
-        </ul>
-    </main>
+        <aside class="menu-lateral">
+            <ul class="lista-menu">
+                <li><a href="#automatizaciones">Automatizaciones</a></li>
+                <li><a href="#ntr">NTR</a></li>
+                <li><a href="#arpac">ARPAC</a></li>
+                <li><a href="#cpc">CPC</a></li>
+                <li><a href="#modelo-liquidacion">Modelo liquidación de ingresos</a></li>
+            </ul>
+        </aside>
+
+        <main class="area-contenido">
+            <div class="tarjeta-contenido">
+                <h2>Bienvenida al Panel</h2>
+                <p>Selecciona una opción del menú lateral izquierdo. En este espacio en blanco se visualizará la información que cargarás próximamente para cada módulo.</p>
+                </div>
+        </main>
+
+    </div>
 
 </body>
 </html>
