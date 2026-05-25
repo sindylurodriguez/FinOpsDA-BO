@@ -17,7 +17,6 @@
             --borde: #E0E0E0;
         }
 
-        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -30,13 +29,11 @@
             color: var(--azul-bold);
             display: flex;
             flex-direction: column;
-            height: 100vh; /* Ocupa toda la altura de la pantalla */
-            overflow: hidden; /* Evita scroll general, lo controlaremos por zonas */
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* =========================================
-           BARRA SUPERIOR (HEADER)
-           ========================================= */
+        /* BARRA SUPERIOR */
         .barra-superior {
             background-color: var(--azul-bold);
             color: var(--blanco);
@@ -49,7 +46,7 @@
         }
 
         .logo {
-            height: 35px; /* Controla el tamaño del logo */
+            height: 35px;
             width: auto;
             margin-right: 20px;
             object-fit: contain;
@@ -63,18 +60,14 @@
             padding-left: 20px;
         }
 
-        /* =========================================
-           CONTENEDOR DEL DASHBOARD (MENÚ + CONTENIDO)
-           ========================================= */
+        /* CONTENEDOR PRINCIPAL */
         .contenedor-dashboard {
             display: flex;
             flex: 1;
             overflow: hidden;
         }
 
-        /* =========================================
-           MENÚ LATERAL (SIDEBAR)
-           ========================================= */
+        /* MENÚ LATERAL */
         .menu-lateral {
             width: 260px;
             background-color: var(--blanco);
@@ -100,31 +93,30 @@
             font-weight: 600;
             border-left: 4px solid transparent;
             transition: all 0.2s ease-in-out;
+            cursor: pointer; /* Hace que el cursor sea una manito */
         }
 
-        /* Efecto al pasar el mouse por el menú */
         .lista-menu li a:hover {
             background-color: var(--gris-claro);
             color: var(--coral-vibrante);
             border-left-color: var(--coral-vibrante);
         }
 
-        /* =========================================
-           ÁREA DE CONTENIDO DERECHA
-           ========================================= */
+        /* ÁREA DE CONTENIDO DERECHA */
         .area-contenido {
             flex: 1;
-            padding: 40px;
-            overflow-y: auto; /* Permite scroll solo en esta área si hay mucha info */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Tarjeta blanca donde irá la información */
+        /* Tarjeta de bienvenida */
         .tarjeta-contenido {
             background-color: var(--blanco);
             border-radius: 12px;
             padding: 40px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            min-height: 400px;
+            height: 100%;
         }
 
         .tarjeta-contenido h2 {
@@ -138,12 +130,23 @@
             line-height: 1.6;
         }
 
+        /* Ventana Iframe para cargar otras páginas (oculta al inicio) */
+        .visor-iframe {
+            display: none; /* Se oculta hasta que damos clic a un enlace */
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            background-color: var(--blanco);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
     </style>
 </head>
 <body>
 
     <header class="barra-superior">
-        <img src="LOGO-BOLD-BLANCO.png" alt="Logo Bold" class="logo">
+        <img src="beld.png" alt="Logo Bold" class="logo">
         <h1 class="titulo-principal">FinOpsDA-BO</h1>
     </header>
 
@@ -151,22 +154,43 @@
         
         <aside class="menu-lateral">
             <ul class="lista-menu">
-                <li><a href="#automatizaciones">Automatizaciones</a></li>
-                <li><a href="#ntr">NTR</a></li>
-                <li><a href="#arpac">ARPAC</a></li>
-                <li><a href="#cpc">CPC</a></li>
-                <li><a href="#modelo-liquidacion">Modelo liquidación de ingresos</a></li>
+                <li><a onclick="mostrarPagina('https://aldemarjerez-crypto.github.io/Finops-Tooldeck/index.html')">Automatizaciones</a></li>
+                
+                <li><a onclick="mostrarPagina('')">NTR</a></li>
+                <li><a onclick="mostrarPagina('')">ARPAC</a></li>
+                <li><a onclick="mostrarPagina('')">CPC</a></li>
+                <li><a onclick="mostrarPagina('')">Modelo liquidación de ingresos</a></li>
             </ul>
         </aside>
 
         <main class="area-contenido">
-            <div class="tarjeta-contenido">
+            <div id="bienvenida" class="tarjeta-contenido">
                 <h2>Bienvenida al Panel</h2>
-                <p>Selecciona una opción del menú lateral izquierdo. En este espacio en blanco se visualizará la información que cargarás próximamente para cada módulo.</p>
-                </div>
+                <p>Selecciona una opción del menú lateral izquierdo. En este espacio se visualizará la información y las herramientas correspondientes a cada módulo.</p>
+            </div>
+
+            <iframe id="visor" class="visor-iframe" src=""></iframe>
         </main>
 
     </div>
+
+    <script>
+        function mostrarPagina(url) {
+            // Si no hay un link todavía (en NTR, ARPAC, etc.), no hace nada
+            if(url === '') {
+                alert('Aún no hay una página configurada para esta opción.');
+                return;
+            }
+
+            // Ocultar el mensaje de bienvenida
+            document.getElementById('bienvenida').style.display = 'none';
+            
+            // Mostrar la ventana del Iframe y cargar el enlace
+            let iframe = document.getElementById('visor');
+            iframe.style.display = 'block';
+            iframe.src = url;
+        }
+    </script>
 
 </body>
 </html>
