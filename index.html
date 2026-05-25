@@ -4,27 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinOpsDA-BO | Bold</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Variables de color según el Brandbook de Bold */
+        :root {
+            --azul-bold: #121E6C;
+            --coral-vibrante: #EE424E;
+            --blanco: #FFFFFF;
+        }
+
+        /* Configuración básica de la página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--azul-bold); /* Fondo Azul Bold asegurado */
+            color: var(--blanco);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Encabezado: Controla la posición y tamaño del logo */
+        .encabezado {
+            width: 100%;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: flex-end; /* Mueve el logo a la derecha */
+        }
+
+        .logo {
+            height: 45px; /* Hace que el logo sea pequeño */
+            width: auto;
+            border-radius: 8px; /* Le da un toque suave si la imagen es cuadrada */
+        }
+
+        /* Contenedor del título y menú */
+        .contenido {
+            text-align: center;
+            margin-top: 20px;
+            width: 90%;
+            max-width: 650px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Diseño de los enlaces como botones modernos */
+        .menu {
+            list-style: none; /* Quita los puntos de la lista */
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Espacio entre botones */
+        }
+
+        .menu li a {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.1); /* Botón azul claro/transparente */
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 18px 20px;
+            border-radius: 12px; /* Bordes redondeados modernos */
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease; /* Animación suave */
+        }
+
+        /* Efecto al pasar el mouse por encima del botón */
+        .menu li a:hover {
+            background-color: var(--coral-vibrante); /* Cambia al rojo/coral de Bold */
+            border-color: var(--coral-vibrante);
+            transform: translateY(-3px); /* Efecto de que el botón se levanta */
+            box-shadow: 0 10px 20px rgba(238, 66, 78, 0.4); /* Sombra elegante */
+        }
+    </style>
 </head>
 <body>
 
     <header class="encabezado">
-        <img src="Bold-log.png" alt="Logo Bold" class="logo">
+        <img src="beld.png" alt="Logo Bold" class="logo"> 
     </header>
 
-    <main class="contenido-principal">
-        <h1 class="titulo">FinOpsDA-BO</h1>
-
-        <nav class="navegacion">
-            <ul class="lista-enlaces">
-                <li><a href="#automatizaciones">Automatizaciones</a></li>
-                <li><a href="#ntr">NTR</a></li>
-                <li><a href="#arpac">ARPAC</a></li>
-                <li><a href="#cpc">CPC</a></li>
-                <li><a href="#modelo-liquidacion">Modelo liquidación de ingresos</a></li>
-            </ul>
-        </nav>
+    <main class="contenido">
+        <h1>FinOpsDA-BO</h1>
+        
+        <ul class="menu">
+            <li><a href="#automatizaciones">Automatizaciones</a></li>
+            <li><a href="#ntr">NTR</a></li>
+            <li><a href="#arpac">ARPAC</a></li>
+            <li><a href="#cpc">CPC</a></li>
+            <li><a href="#modelo-liquidacion">Modelo liquidación de ingresos</a></li>
+        </ul>
     </main>
 
 </body>
