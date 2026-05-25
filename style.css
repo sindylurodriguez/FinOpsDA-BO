@@ -1,0 +1,80 @@
+/* =========================================
+   Variables de Color (Bold Brandbook)
+   ========================================= */
+:root {
+    --azul-bold: #121E6C;
+    --coral-vibrante: #EE424E;
+    --blanco: #FFFFFF;
+}
+
+/* =========================================
+   Estilos Generales
+   ========================================= */
+body {
+    background-color: var(--azul-bold); /* Fondo Azul Bold */
+    color: var(--blanco); /* Textos en blanco para contraste */
+    font-family: 'Montserrat', sans-serif; /* Tipografía oficial */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* =========================================
+   Encabezado y Logo
+   ========================================= */
+.encabezado {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: flex-start; /* Asegura el logo a la izquierda */
+}
+
+.logo {
+    height: 40px; /* Ajusta la altura según necesites */
+    width: auto;
+}
+
+/* =========================================
+   Contenido Principal
+   ========================================= */
+.contenido-principal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.titulo {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   Navegación y Lista de Enlaces
+   ========================================= */
+.navegacion {
+    background-color: rgba(255, 255, 255, 0.05); /* Caja sutil para enmarcar el menú */
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.lista-enlaces {
+    list-style-type: none; /* Elimina las viñetas predeterminadas */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaciado entre cada enlace */
+}
+
+.lista-enlaces li a {
+    color: var(--blanco);
+    text-decoration: none; /* Quita el subrayado de los links */
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: color 0.3s ease; /* Transición suave de color */
+}
+
+/* Efecto hover: Cambia a Coral Vibrante al pasar el mouse */
+.lista-enlaces li a:hover {
+    color: var(--coral-vibrante);
+}
